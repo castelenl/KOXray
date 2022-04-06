@@ -18,7 +18,7 @@ header Connection *Upgrade*
 header Upgrade    websocket
 path /$AUUID-vmess
 }
-reverse_proxy @websocket_xray_vmess unix//etc/caddy/vmess
+reverse_proxy @websocket_xray_vmess 127.0.0.1:6234
 
 
 @websocket_xray_vless {
@@ -26,14 +26,14 @@ header Connection *Upgrade*
 header Upgrade    websocket
 path /$AUUID-vless
 }
-reverse_proxy @websocket_xray_vless unix//etc/caddy/vless
+reverse_proxy @websocket_xray_vless 127.0.0.1:7234
 
 @websocket_xray_trojan {
 header Connection *Upgrade*
 header Upgrade    websocket
 path /$AUUID-trojan
 }
-reverse_proxy @websocket_xray_trojan unix//etc/caddy/trojan
+reverse_proxy @websocket_xray_trojan 127.0.0.1:8234
 
 @websocket_xray_ss {
 header Connection *Upgrade*
