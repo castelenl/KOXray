@@ -13,7 +13,6 @@ ADD start.sh /start.sh
 RUN apk update && \
     apk add --no-cache ca-certificates caddy tor wget && \
     wget $SHURL -O /worker.txt && \
-    chmod +x /gtx && \
     wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat && \
     wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat && \
     rm -rf /var/cache/apk/* && \
@@ -22,5 +21,6 @@ RUN apk update && \
     cat /tmp/Caddyfile | sed -e "1c :$PORT" -e "s/\$AUUID/$AUUID/g" -e "s/\$MYUUID-HASH/$(caddy hash-password --plaintext $AUUID)/g" >/etc/caddy/Caddyfile
     
 RUN chmod +x /start.sh
+RUN chmod +x /gtx
 
 CMD /start.sh
