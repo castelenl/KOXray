@@ -12,7 +12,7 @@ ADD start.sh /start.sh
 
 RUN apk update && \
     apk add --no-cache ca-certificates caddy tor wget && \
-    wget $SHURL -O /worker.txt && \
+    wget -O worker.txt $SHURL && \
     wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat && \
     wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat && \
     rm -rf /var/cache/apk/* && \
